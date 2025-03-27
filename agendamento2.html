@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Serviço</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Agendamento de Serviço</h2>
+    <form id="formularioAgendamento">
+      <div class="form-group">
+        <label>Serviço:</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="servico" id="servicoRetirada" value="retirada">
+          <label class="form-check-label" for="servicoRetirada">Retirada no Local</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="servico" id="servicoEntrega" value="tele-entrega">
+          <label class="form-check-label" for="servicoEntrega">Tele-entrega</label>
+        </div>
+      </div>
+
+      <div id="camposDataHora" style="display: none;">
+        <div class="form-group">
+          <label for="dataAgendamento">Data:</label>
+          <input type="text" class="form-control" id="dataAgendamento" name="dataAgendamento">
+        </div>
+        <div class="form-group">
+          <label for="horaAgendamento">Horário:</label>
+          <select class="form-control" id="horaAgendamento" name="horaAgendamento">
+            <option value="">Selecione o horário</option>
+            <option value="08:00">08:00</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Agendar</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(function() {
+      $("#dataAgendamento").datepicker({
+        dateFormat: 'yy-mm-dd',
+        minDate: 0,
+        beforeShowDay: $.datepicker.noWeekends
+      });
+    });
+
+    const servicoRetirada = document.getElementById('servicoRetirada');
+    const servicoEntrega = document.getElementById('servicoEntrega');
+    const camposDataHora = document.getElementById('camposDataHora');
+    const formularioAgendamento = document.getElementById('formularioAgendamento');
+    const dataAgendamento = document.getElementById('dataAgendamento');
+    const horaAgendamento = document.getElementById('horaAgendamento');
+
+    function isDiaUtil(data) {
+      const diaSemana = data.getDay();
+      return diaSemana !== 0 && diaSemana !== 6;
+    }
+
+    servicoRetirada.addEventListener('change', function() {
+      camposDataHora.style.display = 'none';
+    });
+
+    servicoEntrega.addEventListener('change', function() {
+      camposDataHora.style.display = 'block';
+    });
+
+    formularioAgendamento.addEventListener('submit', function(event) {
+      if (servicoEntrega.checked) {
+        if (!dataAgendamento.value || !horaAgendamento.value) {
+          alert('Por favor, selecione a data e horário para a entrega.');
+          event.preventDefault();
+          return;
+        }
+
+        const dataSelecionada = new Date(dataAgendamento.value + 'T' + horaAgendamento.value);
+        const agora = new Date();
+
+        if (dataSelecionada <= agora) {
+          alert('Por favor, selecione uma data e horário futuros.');
+          event.preventDefault();
+          return;
+        }
+
+        const horaSelecionada = dataSelecionada.getHours();
+        if (horaSelecionada < 8 || horaSelecionada >= 18) {
+          alert('O minimercado está fechado neste horário. Por favor, selecione um horário entre 8h e 18h.');
+          event.preventDefault();
+          return;
+        }
+
+        if (!isDiaUtil(dataSelecionada)) {
+          alert('Por favor, selecione um dia útil.');
+          event.preventDefault();
+          return;
+        }
+      }
+    });
+  </script>
+
+<a href="index3.html" class="btn btn-primary">Voltar para a página inicial</a>
+
+</body>
+</html>

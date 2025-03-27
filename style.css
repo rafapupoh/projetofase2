@@ -1,0 +1,122 @@
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos do banner */
+.banner {
+    background-color: #f0f8ff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 3em;
+    color: #008080;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.banner button {
+    background-color: #008080;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+/* Estilos da seção de novidades */
+.novidades {
+    background-color: #f8f8f8;
+    padding: 30px 0;
+}
+
+.novidades h2 {
+    font-size: 2em;
+    color: #008080;
+    margin-bottom: 20px;
+}
+
+.novidades .produto {
+    margin-bottom: 20px;
+}
+
+.novidades .produto img {
+    max-width: 100%;
+}
+
+.novidades .produto h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+novidades .produto p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+novidades .produto button {
+    background-color: #008080;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Estilos da barra de navegação */
+nav {
+    background-color: #008080;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .banner h1 {
+        font-size: 2em;
+    }
+
+    .novidades .produto {
+        text-align: center;
+    }
+}

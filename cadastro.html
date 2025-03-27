@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Cadastro de Cliente</h2>
+        <form id="cadastroForm">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo" required>
+                <div id="nomeError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" class="form-control" id="endereco" placeholder="Digite seu endereço" required>
+                <div id="enderecoError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF" required>
+                <div id="cpfError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label>Sexo:</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" id="masculino" value="masculino" required>
+                    <label class="form-check-label" for="masculino">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" id="feminino" value="feminino" required>
+                    <label class="form-check-label" for="feminino">Feminino</label>
+                </div>
+                <div id="sexoError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" class="form-control" id="telefone" placeholder="Digite seu telefone" required>
+                <div id="telefoneError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                <div id="emailError" class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            let isValid = true;
+
+            // Validação do nome
+            const nome = document.getElementById('nome').value;
+            if (!nome.trim()) {
+                document.getElementById('nomeError').textContent = 'Nome é obrigatório.';
+                isValid = false;
+            } else {
+                document.getElementById('nomeError').textContent = '';
+            }
+
+            // Validação do endereço
+            const endereco = document.getElementById('endereco').value;
+            if (!endereco.trim()) {
+                document.getElementById('enderecoError').textContent = 'Endereço é obrigatório.';
+                isValid = false;
+            } else {
+                document.getElementById('enderecoError').textContent = '';
+            }
+
+            // Validação do CPF
+            const cpf = document.getElementById('cpf').value;
+            if (!cpf.match(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)) {
+                document.getElementById('cpfError').textContent = 'CPF inválido. Use o formato: 000.000.000-00';
+                isValid = false;
+            } else {
+                document.getElementById('cpfError').textContent = '';
+            }
+
+            // Validação do sexo
+            if (!document.querySelector('input[name="sexo"]:checked')) {
+                document.getElementById('sexoError').textContent = 'Selecione o sexo.';
+                isValid = false;
+            } else {
+                document.getElementById('sexoError').textContent = '';
+            }
+
+            // Validação do telefone
+            const telefone = document.getElementById('telefone').value;
+            if (!telefone.match(/^\(\d{2}\) \d{5}-\d{4}$/)) {
+                document.getElementById('telefoneError').textContent = 'Telefone inválido. Use o formato: (99) 99999-9999';
+                isValid = false;
+            } else {
+                document.getElementById('telefoneError').textContent = '';
+            }
+
+            // Validação do e-mail
+            const email = document.getElementById('email').value;
+            if (!email.match(/^\S+@\S+\.\S+$/)) {
+                document.getElementById('emailError').textContent = 'E-mail inválido.';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').textContent = '';
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Impede o envio do formulário se houver erros
+            }
+        });
+    </script>
+
+<a href="index3.html" class="btn btn-primary">Voltar para a página inicial</a>
+</body>
+</html>

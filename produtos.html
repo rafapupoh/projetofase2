@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Minimercado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Produtos</h1>
+            <nav>
+                <a href="index3.html">Voltar para a página inicial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <p>Confira nossos produtos:</p>
+        <ul class="list-unstyled">
+            <li class="produto row mb-4">
+                <div class="col-md-3">
+                    <img src="images/produtos/alimentos/arroz.jpg" alt="Arroz branco tipo 1, pacote de 5kg." class="img-fluid">
+                </div>
+                <div class="col-md-9">
+                    <h2>Arroz</h2>
+                    <p>Arroz branco tipo 1, pacote de 5kg.</p>
+                    <p>Preço: R$ 20,00</p>
+                    <button class="btn btn-primary comprar-produto" data-produto="arroz">Comprar</button>
+                </div>
+            </li>
+            <li class="produto row mb-4">
+                <div class="col-md-3">
+                    <img src="images/produtos/alimentos/feijao.jpg" alt="Feijão carioca, pacote de 1kg." class="img-fluid">
+                </div>
+                <div class="col-md-9">
+                    <h2>Feijão</h2>
+                    <p>Feijão carioca, pacote de 1kg.</p>
+                    <p>Preço: R$ 10,00</p>
+                    <button class="btn btn-primary comprar-produto" data-produto="feijao">Comprar</button>
+                </div>
+            </li>
+        </ul>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
